@@ -44,11 +44,11 @@ def export_traj_race_f110(file_paths: dict,
                      traj_race: np.ndarray) -> None:
     """
     Created by:
-    Steven Gong
+    Chala
 
     Documentation:
     This function is used to export the generated trajectory into a csv file.
-    We only need the x,y and velocity profile in the case of the f110 pure pursuit.
+    We only need the x,y, tetha and velocity profile in the case of the f110 MPC control.
 
     Inputs:
     file_paths:     paths for input and output files {ggv_file, traj_race_export, traj_ltpl_export, lts_export}
@@ -56,9 +56,10 @@ def export_traj_race_f110(file_paths: dict,
     """
 
     # export race trajectory
-    fmt = "%.7f,%.7f,%.7f"
+    header = "s_m; x_m; y_m; psi_rad; kappa_radpm; vx_mps; ax_mps2"
+    fmt = "%.7f; %.7f; %.7f; %.7f; %.7f; %.7f; %.7f"
     with open(file_paths["traj_race_export"], 'ab') as fh:
-        np.savetxt(fh, traj_race[:, [1,2,5]], fmt=fmt, comments='')
+        np.savetxt(fh, traj_race[:, [0,1,2,3,4,5,6]], fmt=fmt, comments='',header=header)
 
 # testing --------------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":

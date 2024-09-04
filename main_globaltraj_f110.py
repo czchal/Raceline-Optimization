@@ -29,7 +29,7 @@ F1TENTH ROS code.
 
 # Create the parser and add arguments with defaults and explicit names
 parser = argparse.ArgumentParser(description='Generate optimal trajectory for F1TENTH racing.')
-parser.add_argument('--map_name', type=str, default='e7_floor5_square', help='Name of the map (default: e7_floor5_square)')
+parser.add_argument('--map_name', type=str, default='track_mask', help='Name of the map (default: e7_floor5_square)')
 parser.add_argument('--map_path', type=str, default='', help='Path to the map centerline (should be a .csv), defaults to inputs/tracks/<map_name>.csv')
 parser.add_argument('--export_path', type=str, default='', help='Path to copy from the filepath in the /outputs')
 
@@ -152,7 +152,8 @@ if opt_type == 'mintime' \
 # create outputs folder(s)
 os.makedirs(file_paths["module"] + f"/outputs/{MAP_NAME}", exist_ok=True)
 
-TIME = str(datetime.now())
+# TIME = str(datetime.now()) 
+TIME = datetime.now().strftime("%Y%m%d_%H%M%S").replace(':', '_')
 if opt_type == 'mintime':
     os.makedirs(file_paths["module"] + f"/outputs/{MAP_NAME}/mintime-{TIME}", exist_ok=True)
 
