@@ -44,6 +44,8 @@ def export_traj_race_f110(file_paths: dict,
                      traj_race: np.ndarray) -> None:
     """
     Created by:
+    Steven Gong
+    Modified by:
     Chala
 
     Documentation:
